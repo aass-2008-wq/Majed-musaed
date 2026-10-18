@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبارات ماجد مساعد المطيري | سادس</title>
+<style>
+:root{--cream:#fbf8f1;--white:#fffefa;--tan:#d8c5a7;--brown:#795f48;--dark:#49392c;--muted:#8b7967;--line:#e9dfd0;--snow:#f3f7f8}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;color:var(--dark);background:linear-gradient(180deg,#f8fbfc 0%,var(--cream) 55%,#f1e8dc 100%);min-height:100vh}
+.snow{position:fixed;inset:0;pointer-events:none;opacity:.48;background-image:radial-gradient(#fff 1.5px,transparent 2px),radial-gradient(#d9e4e7 1px,transparent 2px);background-size:43px 43px,71px 71px;background-position:0 0,20px 18px}
+header{position:relative;overflow:hidden;text-align:center;padding:36px 16px 30px;background:linear-gradient(135deg,#fffefa,#eee4d5);border-bottom:1px solid var(--line)}
+header:before,header:after{content:"";position:absolute;color:#c7d7dc;font-size:50px;opacity:.65}header:before{top:12px;right:8%}header:after{bottom:8px;left:9%;font-size:36px}
+h1{margin:0;font-size:clamp(25px,5vw,38px);color:var(--dark)}header p{margin:10px 0 0;color:var(--muted)}
+main{position:relative;max-width:900px;margin:24px auto;padding:0 14px 42px}
+.panel{background:rgba(255,254,250,.94);border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:18px;box-shadow:0 10px 28px #7b624012}
+h2{font-size:20px;margin:0 0 15px}label{display:block;font-weight:bold;margin:0 0 7px;font-size:14px}
+input,select{width:100%;padding:13px 12px;border:1px solid #d9c9b3;border-radius:12px;background:#fffefa;color:var(--dark);font:inherit;outline:none}
+input:focus,select:focus{border-color:var(--brown);box-shadow:0 0 0 3px #d8c5a733}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.lesson-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.lesson{border:1px solid var(--line);background:#fffdf8;border-radius:16px;padding:15px;text-align:right;cursor:pointer;color:var(--dark);font:inherit;transition:.15s}
+.lesson:hover{transform:translateY(-2px);border-color:var(--tan)}.lesson.active{background:#e9dfd0;border-color:#b49a7a;box-shadow:inset 0 0 0 1px #b49a7a}
+.lesson span{display:block;font-size:12px;color:var(--muted);margin-top:6px}
+button.primary,.action{border:0;border-radius:12px;background:var(--brown);color:white;padding:13px 18px;font:inherit;font-weight:bold;cursor:pointer}
+button.primary:disabled{opacity:.45;cursor:not-allowed}.action.secondary{background:#e8dece;color:var(--dark)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+#quiz{display:none}.progress{height:7px;background:#eee5d9;border-radius:99px;overflow:hidden;margin:12px 0 20px}.progress div{height:100%;width:0;background:#9c8264;transition:width .2s}
+.qtext{font-size:19px;font-weight:bold;line-height:1.8;margin-bottom:16px}.answers{display:grid;gap:10px}.answer{display:flex;gap:10px;align-items:center;border:1px solid var(--line);padding:13px;border-radius:13px;cursor:pointer;background:#fffefa}.answer input{width:auto;accent-color:var(--brown)}.answer:has(input:checked){background:#f0e7d9;border-color:#b49a7a}
+#result{display:none}.score{font-size:36px;font-weight:bold;color:var(--brown)}.small{color:var(--muted);font-size:13px;line-height:1.8}.snowflake{color:#9aafba}
+footer{text-align:center;padding:18px;color:var(--muted);font-size:12px}
+@media(max-width:480px){.panel{padding:17px}header{padding-top:32px}}
+
+.eyebrow{font-size:13px;color:var(--brown);margin-bottom:14px;letter-spacing:.5px}
+header{padding:48px 16px 36px}body{line-height:1.7}.lesson{min-height:100px}
+.lesson:focus-visible,button:focus-visible{outline:3px solid #795f48;outline-offset:4px}
+button:disabled{opacity:.45;cursor:not-allowed}button,input,select{min-height:48px}
+.review-item{border:1px solid var(--line);border-right:4px solid #b66a49;border-radius:12px;padding:15px;margin:12px 0;background:#fffaf5}
+.review-item.correct{border-right-color:#55764d;background:#f5f8f2}
+.result-student{font-weight:bold}.score{font-size:48px}#resultInfo{overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{body{background:white;color:black}.snow,header,.setup,footer,.actions,#quiz{display:none!important}main{margin:0;padding:0;max-width:none}.panel{box-shadow:none;border:0;padding:0}.review-item{break-inside:avoid}#result{display:block!important}}
+</style>
+</head>
+<body>
+<div class="snow"></div>
+<header>
+<div class="eyebrow">لغتي • تعلّم وتدرّب</div>
+<h1>اختبارات ماجد مساعد المطيري</h1>
+<p>مراجعة تفاعلية لدروس لغتي • الصف السادس الابتدائي</p>
+</header>
+<main>
+<section class="panel setup">
+<h2>١. بيانات الطالب</h2>
+<div class="fields">
+<div><label for="student">اسم الطالب</label><input id="student" maxlength="80" autocomplete="name" placeholder="اكتب اسمك هنا"></div>
+<div><label for="className">الفصل</label><select id="className"><option value="">اختر الفصل</option><option>سادس أ</option><option>سادس ب</option></select></div>
+</div>
+</section>
+<section class="panel setup">
+<h2>٢. اختر الاختبار</h2>
+<p class="small">كل درس له اختبار مستقل. اختر درسًا واحدًا، ثم ابدأ الحل.</p>
+<div class="lesson-grid" id="lessonGrid">
+<button class="lesson active" data-lesson="kana">كان وأخواتها <span>اختبار مستقل</span></button>
+<button class="lesson" data-lesson="praise">أسلوب المدح والذم <span>اختبار مستقل</span></button>
+<button class="lesson" data-lesson="middle">الهمزة المتوسطة <span>اختبار مستقل</span></button>
+<button class="lesson" data-lesson="end">الهمزة المتطرفة <span>اختبار مستقل</span></button>
+<button class="lesson" data-lesson="derived">اسم الفاعل واسم المفعول من الفعل الثلاثي <span>اختبار مستقل</span></button>
+</div>
+<div class="actions"><button class="primary" id="startBtn">ابدأ الاختبار</button></div>
+<p class="small">تنبيه: مشاركة النتيجة تفتح واتساب برسالة جاهزة للأستاذ، ولا ترسلها تلقائيًا.</p>
+</section>
+<section class="panel" id="quiz">
+<h2 id="quizTitle" tabindex="-1"></h2><div class="small" id="counter"></div><div class="progress"><div id="bar"></div></div>
+<div class="qtext" id="question" tabindex="-1"></div><div class="answers" id="answers"></div>
+<div class="actions"><button class="action secondary" id="backBtn">السابق</button><button class="primary" id="nextBtn">التالي</button></div>
+</section>
+<section class="panel" id="result">
+<h2 id="resultTitle" tabindex="-1">نتيجة الاختبار</h2><p id="resultInfo"></p><div class="score" id="score"></div><p id="feedback"></p><div id="review"></div>
+<div class="actions"><button class="primary" id="shareBtn">مشاركة الدرجة مع الأستاذ</button><button class="action secondary" id="retryBtn">إعادة الاختبار</button><button class="action secondary" id="homeBtn">اختيار اختبار آخر</button><button class="action secondary" id="printBtn">طباعة النتيجة</button></div>
+</section>
+</main>
+<footer>اختبارات ماجد مساعد المطيري • للمراجعة والتعلّم</footer>
+<script>
+const tests={
+kana:{title:"كان وأخواتها",qs:[
+["ما عمل كان وأخواتها في الجملة الاسمية؟",["ترفع المبتدأ والخبر","تنصب المبتدأ وترفع الخبر","ترفع المبتدأ وتنصب الخبر","تجزم الفعل"],2],
+["أكمل: كان الجوُّ ____.",["جميلٌ","جميلًا","جميلٍ","جميلاً هو"],1],
+["أي كلمة من أخوات كان؟",["إنَّ","أصبح","لن","هل"],1],
+["في جملة «أصبح الطالبُ نشيطًا»، اسم أصبح هو:",["أصبح","الطالبُ","نشيطًا","الجملة كلها"],1],
+["أكمل: ليس الكسلُ ____.",["مفيدٌ","مفيدًا","مفيدٍ","يفيد"],1]]},
+praise:{title:"أسلوب المدح والذم",qs:[
+["أي كلمة تُستخدم للمدح؟",["بئس","ساء","نعم","ليس"],2],
+["أي كلمة تُستخدم للذم؟",["نعم","حبذا","بئس","أصبح"],2],
+["في «نعمَ الخُلُقُ الصدقُ»، فعل المدح هو:",["الخلق","الصدق","نعم","هو"],2],
+["في «بِئْسَ الخُلُقُ الكذبُ»، المخصوص بالذم هو:",["بئس","الخُلُق","الكذب","لا يوجد"],2],
+["أكمل أسلوب المدح: ____ الطالبُ المجتهدُ.",["بئس","نعم","ليس","كان"],1]]},
+middle:{title:"الهمزة المتوسطة",qs:[
+["كيف نكتب الهمزة المتوسطة في كلمة «سُئِل»؟",["على ألف","على واو","على ياء بدون نقط","على السطر"],2],
+["ما أقوى الحركات عند كتابة الهمزة؟",["الفتحة","الضمة","الكسرة","السكون"],2],
+["اختر الكتابة الصحيحة:",["فأة","فئة","فؤة","فءة"],1],
+["تكتب الهمزة المتوسطة على الواو غالبًا إذا كانت أقوى الحركتين:",["الكسرة","الضمة","الفتحة","السكون دائمًا"],1],
+["اختر الكلمة المكتوبة كتابة صحيحة:",["مسألة","مسئلة","مسءلة","مسؤلة"],0]]},
+end:{title:"الهمزة المتطرفة",qs:[
+["على ماذا تُكتب الهمزة المتطرفة في «شاطئ»؟",["الألف","الواو","ياء بدون نقط","السطر"],2],
+["تُكتب الهمزة المتطرفة على السطر في كلمة:",["لؤلؤ","قارئ","سماء","مبدأ"],2],
+["اختر الكتابة الصحيحة:",["ملجأ","ملجؤ","ملجئ","ملجء"],0],
+["إذا سبق الهمزة المتطرفة حرف مضموم، فإنها تُكتب غالبًا على:",["الألف","الواو","ياء بدون نقط","السطر"],1],
+["أي كلمة همزتها المتطرفة على الألف؟",["شاطئ","تباطؤ","بدأ","دفء"],2]]},
+derived:{title:"اسم الفاعل واسم المفعول من الفعل الثلاثي",qs:[
+["اسم الفاعل من الفعل «كتب» هو:",["مكتوب","كاتب","كتاب","كتابة"],1],
+["اسم المفعول من الفعل «فتح» هو:",["فاتح","مفتاح","مفتوح","فَتْح"],2],
+["اسم الفاعل من الفعل «سكب» هو:",["مسكوب","ساكب","سكوب","سكب"],1],
+["اسم المفعول من الفعل «حفظ» هو:",["حافظ","حفيظ","محفوظ","حفظ"],2],
+["الوزن الشائع لاسم الفاعل من الفعل الثلاثي هو:",["مفعول","فاعل","فعيل","مفعال"],1]]}
+};
+"use strict";
+let selected = "kana";
+let attempt = null;
+const $ = id => document.getElementById(id);
+const number = value => value.toLocaleString("ar-SA");
+const smooth = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+function show(id) {
+  document.querySelectorAll(".setup").forEach(el => el.hidden = id !== "setup");
+  ["quiz", "result"].forEach(key => $(key).style.display = key === id ? "block" : "none");
+}
+function focusQuestion() { $("question").focus({preventScroll:true}); }
+document.querySelectorAll(".lesson").forEach(btn => {
+  btn.setAttribute("aria-pressed", String(btn.dataset.lesson === selected));
+  btn.addEventListener("click", () => {
+    selected = btn.dataset.lesson;
+    document.querySelectorAll(".lesson").forEach(item => {
+      const active = item === btn;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+  });
+});
+$("startBtn").addEventListener("click", () => {
+  const student = $("student").value.trim();
+  if (!student) { alert("اكتب اسم الطالب أولًا."); $("student").focus(); return; }
+  if (!$("className").value) { alert("اختر الفصل أولًا."); $("className").focus(); return; }
+  attempt = {lesson:selected, student, className:$("className").value, answers:[], index:0, finished:false, score:0};
+  startAttempt();
+});
+function startAttempt() {
+  show("quiz");
+  $("quizTitle").textContent = tests[attempt.lesson].title;
+  renderQuestion();
+  $("quiz").scrollIntoView({behavior:smooth(),block:"start"});
+}
+function renderQuestion() {
+  const questions = tests[attempt.lesson].qs;
+  const q = questions[attempt.index];
+  $("counter").textContent = `السؤال ${number(attempt.index+1)} من ${number(questions.length)}`;
+  $("bar").style.width = (attempt.answers.filter(value => value !== undefined).length / questions.length * 100) + "%";
+  $("question").textContent = q[0];
+  $("answers").replaceChildren();
+  q[1].forEach((answer,i) => {
+    const label = document.createElement("label");
+    label.className = "answer";
+    const input = document.createElement("input");
+    input.type = "radio"; input.name = "answer"; input.value = i;
+    input.checked = attempt.answers[attempt.index] === i;
+    input.addEventListener("change", () => {
+      if (attempt.finished) return;
+      attempt.answers[attempt.index] = i;
+      $("nextBtn").disabled = false;
+      $("bar").style.width = (attempt.answers.filter(value => value !== undefined).length / questions.length * 100) + "%";
+    });
+    label.append(input, document.createTextNode(answer));
+    $("answers").append(label);
+  });
+  $("backBtn").disabled = attempt.index === 0;
+  $("nextBtn").textContent = attempt.index === questions.length-1 ? "إنهاء الاختبار" : "التالي";
+  $("nextBtn").disabled = attempt.answers[attempt.index] === undefined;
+  focusQuestion();
+}
+$("backBtn").addEventListener("click", () => {
+  if (attempt && !attempt.finished && attempt.index > 0) { attempt.index--; renderQuestion(); }
+});
+$("nextBtn").addEventListener("click", () => {
+  if (!attempt || attempt.finished || attempt.answers[attempt.index] === undefined) return;
+  if (attempt.index < tests[attempt.lesson].qs.length-1) { attempt.index++; renderQuestion(); }
+  else showResult();
+});
+function showResult() {
+  const test = tests[attempt.lesson];
+  attempt.finished = true;
+  attempt.score = test.qs.reduce((sum,q,i) => sum + Number(attempt.answers[i] === q[2]), 0);
+  show("result");
+  $("resultInfo").textContent = `${attempt.student} • ${attempt.className} • ${test.title}`;
+  $("score").textContent = `${number(attempt.score)} / ${number(test.qs.length)}`;
+  const ratio = attempt.score / test.qs.length;
+  $("feedback").textContent = ratio === 1 ? "ممتاز! جميع إجاباتك صحيحة." : ratio >= .6 ? "أحسنت! راجع الإجابات لتتقن الدرس." : "واصل التدرّب، وراجع الإجابات ثم حاول مرة أخرى.";
+  $("review").replaceChildren();
+  const heading = document.createElement("h3"); heading.textContent = "مراجعة الإجابات"; $("review").append(heading);
+  test.qs.forEach((q,i) => {
+    const correct = attempt.answers[i] === q[2];
+    const item = document.createElement("article"); item.className = "review-item" + (correct ? " correct" : "");
+    const title = document.createElement("b"); title.textContent = `${number(i+1)}. ${q[0]}`;
+    const answer = document.createElement("div"); answer.textContent = `${correct ? "صحيحة" : "غير صحيحة"} — إجابتك: ${q[1][attempt.answers[i]]}`;
+    item.append(title,answer);
+    if (!correct) { const solution = document.createElement("div"); solution.textContent = `الإجابة الصحيحة: ${q[1][q[2]]}`; item.append(solution); }
+    $("review").append(item);
+  });
+  $("resultTitle").focus({preventScroll:true});
+  $("result").scrollIntoView({behavior:smooth(),block:"start"});
+}
+$("shareBtn").addEventListener("click", () => {
+  if (!attempt || !attempt.finished) return;
+  const test = tests[attempt.lesson];
+  const message = ["نتيجة اختبار اللغة العربية", `اسم الطالب: ${attempt.student}`, `الفصل: ${attempt.className}`, `الدرس: ${test.title}`, `الدرجة: ${attempt.score} من ${test.qs.length}`].join("\n");
+  window.open("https://wa.me/966593300313?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+});
+$("retryBtn").addEventListener("click", () => {
+  if (!attempt) return;
+  attempt = {...attempt, answers:[], index:0, score:0, finished:false};
+  startAttempt();
+});
+$("homeBtn").addEventListener("click", () => { attempt = null; show("setup"); $("startBtn").focus(); });
+$("printBtn").addEventListener("click", () => window.print());
+</script>
+</body>
+</html>
